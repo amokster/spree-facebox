@@ -11,11 +11,6 @@ module SpreeFacebox
         Rails.env.production? ? require(c) : load(c)
       end
 
-      #Add an extra large (xl) size to use for zooming.
-      Image.attachment_definitions[:attachment][:styles] =
-        { :mini => '48x48>', :small => '100x100>', :product => '240x240>',
-          :large => '600x600>', :xl => '900x900>' }
-
       ProductsHelper.class_eval do
         def image_controls
           @image_controls ||= Facebox::ImageControls.new(@product)
